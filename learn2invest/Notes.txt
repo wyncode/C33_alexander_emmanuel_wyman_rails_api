@@ -1,0 +1,16 @@
+
+
+
+
+
+rails g model customer first_name last_name email mobile street1 street2 city 
+  
+  
+ rails new appname --api
+
+
+rails g model city name zip_codes customers state
+
+rails g model state value cities
+
+rails g model zipcode value cities

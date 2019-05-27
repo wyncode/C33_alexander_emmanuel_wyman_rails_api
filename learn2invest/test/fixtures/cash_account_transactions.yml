@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pennies_withdrawl: 1
+  pennies_deposit: 1
+  pennies_balance: 1
+  cash_account: 
+
+two:
+  pennies_withdrawl: 1
+  pennies_deposit: 1
+  pennies_balance: 1
+  cash_account: 
