@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_232229) do
+ActiveRecord::Schema.define(version: 2019_05_28_005943) do
+
+  create_table "buy_prices", force: :cascade do |t|
+    t.integer "pennies"
+    t.integer "stock_sales_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_sales_id"], name: "index_buy_prices_on_stock_sales_id"
+  end
 
   create_table "cash_account_transactions", force: :cascade do |t|
     t.integer "pennies_withdrawl"
@@ -54,12 +62,51 @@ ActiveRecord::Schema.define(version: 2019_05_26_232229) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "financial_instruments", force: :cascade do |t|
+    t.integer "customers_id", null: false
+    t.integer "stocks_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customers_id"], name: "index_financial_instruments_on_customers_id"
+    t.index ["stocks_id"], name: "index_financial_instruments_on_stocks_id"
+  end
+
+  create_table "sell_prices", force: :cascade do |t|
+    t.integer "pennies"
+    t.integer "stock_sales_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["stock_sales_id"], name: "index_sell_prices_on_stock_sales_id"
+  end
+
   create_table "states", force: :cascade do |t|
     t.string "value"
     t.integer "cities_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["cities_id"], name: "index_states_on_cities_id"
+  end
+
+  create_table "stock_sales", force: :cascade do |t|
+    t.integer "stocks_id", null: false
+    t.integer "buy_prices_id", null: false
+    t.integer "sell_prices_id", null: false
+    t.integer "shares"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["buy_prices_id"], name: "index_stock_sales_on_buy_prices_id"
+    t.index ["sell_prices_id"], name: "index_stock_sales_on_sell_prices_id"
+    t.index ["stocks_id"], name: "index_stock_sales_on_stocks_id"
+  end
+
+  create_table "stocks", force: :cascade do |t|
+    t.string "symbol"
+    t.integer "stock_sales_id", null: false
+    t.integer "financial_instruments_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["financial_instruments_id"], name: "index_stocks_on_financial_instruments_id"
+    t.index ["stock_sales_id"], name: "index_stocks_on_stock_sales_id"
   end
 
   create_table "zipcodes", force: :cascade do |t|
@@ -70,10 +117,19 @@ ActiveRecord::Schema.define(version: 2019_05_26_232229) do
     t.index ["cities_id"], name: "index_zipcodes_on_cities_id"
   end
 
+  add_foreign_key "buy_prices", "stock_sales", column: "stock_sales_id"
   add_foreign_key "cash_accounts", "customers"
   add_foreign_key "cities", "customers", column: "customers_id"
   add_foreign_key "cities", "states"
   add_foreign_key "cities", "zip_codes", column: "zip_codes_id"
+  add_foreign_key "financial_instruments", "customers", column: "customers_id"
+  add_foreign_key "financial_instruments", "stocks", column: "stocks_id"
+  add_foreign_key "sell_prices", "stock_sales", column: "stock_sales_id"
   add_foreign_key "states", "cities", column: "cities_id"
+  add_foreign_key "stock_sales", "buy_prices", column: "buy_prices_id"
+  add_foreign_key "stock_sales", "sell_prices", column: "sell_prices_id"
+  add_foreign_key "stock_sales", "stocks", column: "stocks_id"
+  add_foreign_key "stocks", "financial_instruments", column: "financial_instruments_id"
+  add_foreign_key "stocks", "stock_sales", column: "stock_sales_id"
   add_foreign_key "zipcodes", "cities", column: "cities_id"
 end
