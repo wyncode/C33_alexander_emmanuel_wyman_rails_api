@@ -9,8 +9,6 @@ class CreateCustomers < ActiveRecord::Migration[6.0]
       t.string :street1
       t.string :street2
       t.string :city
-      t.string :financial_instruments
-      t.string :cash_account
 
       t.timestamps
     end
