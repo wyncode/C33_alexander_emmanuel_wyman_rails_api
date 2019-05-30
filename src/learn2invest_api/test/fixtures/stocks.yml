@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  symbol: MyString
+  stock_sales: MyString
+  financial_instrument: MyString
+
+two:
+  symbol: MyString
+  stock_sales: MyString
+  financial_instrument: MyString

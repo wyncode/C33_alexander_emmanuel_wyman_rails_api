@@ -1,0 +1,2 @@
+class StockSale < ApplicationRecord
+end

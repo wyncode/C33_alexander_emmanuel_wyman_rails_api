@@ -1,0 +1,2 @@
+class FinancialInstrument < ApplicationRecord
+end
