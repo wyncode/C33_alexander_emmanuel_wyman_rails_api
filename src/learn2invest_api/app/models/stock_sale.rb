@@ -1,5 +1,5 @@
 class StockSale < ApplicationRecord
-  has_one :sell_price
-  has_one :buy_price
-  has_one :stock
+  belongs_to :sell_price
+  belongs_to :buy_price
+  belongs_to :stock
 end
