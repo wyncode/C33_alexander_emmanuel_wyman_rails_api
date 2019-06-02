@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_204010) do
+ActiveRecord::Schema.define(version: 2019_06_02_170423) do
 
   create_table "buy_prices", force: :cascade do |t|
     t.integer "pennies"
-    t.integer "stock_sales_id", null: false
+    t.integer "stock_sales_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stock_sales_id"], name: "index_buy_prices_on_stock_sales_id"
@@ -58,23 +58,24 @@ ActiveRecord::Schema.define(version: 2019_05_31_204010) do
     t.string "mobile"
     t.string "street1"
     t.string "street2"
-    t.string "city"
+    t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_customers_on_city_id"
   end
 
   create_table "financial_instruments", force: :cascade do |t|
-    t.integer "customers_id", null: false
-    t.integer "stocks_id", null: false
+    t.integer "customer_id", null: false
+    t.integer "stocks_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["customers_id"], name: "index_financial_instruments_on_customers_id"
+    t.index ["customer_id"], name: "index_financial_instruments_on_customer_id"
     t.index ["stocks_id"], name: "index_financial_instruments_on_stocks_id"
   end
 
   create_table "sell_prices", force: :cascade do |t|
     t.integer "pennies"
-    t.integer "stock_sales_id", null: false
+    t.integer "stock_sales_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["stock_sales_id"], name: "index_sell_prices_on_stock_sales_id"
@@ -89,24 +90,24 @@ ActiveRecord::Schema.define(version: 2019_05_31_204010) do
   end
 
   create_table "stock_sales", force: :cascade do |t|
-    t.integer "stocks_id", null: false
-    t.integer "buy_prices_id", null: false
-    t.integer "sell_prices_id", null: false
+    t.integer "stock_id", null: false
+    t.integer "buy_price_id", null: false
+    t.integer "sell_price_id", null: false
     t.integer "shares"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["buy_prices_id"], name: "index_stock_sales_on_buy_prices_id"
-    t.index ["sell_prices_id"], name: "index_stock_sales_on_sell_prices_id"
-    t.index ["stocks_id"], name: "index_stock_sales_on_stocks_id"
+    t.index ["buy_price_id"], name: "index_stock_sales_on_buy_price_id"
+    t.index ["sell_price_id"], name: "index_stock_sales_on_sell_price_id"
+    t.index ["stock_id"], name: "index_stock_sales_on_stock_id"
   end
 
   create_table "stocks", force: :cascade do |t|
     t.string "symbol"
-    t.integer "stock_sales_id", null: false
-    t.integer "financial_instruments_id", null: false
+    t.integer "stock_sales_id"
+    t.integer "financial_instrument_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["financial_instruments_id"], name: "index_stocks_on_financial_instruments_id"
+    t.index ["financial_instrument_id"], name: "index_stocks_on_financial_instrument_id"
     t.index ["stock_sales_id"], name: "index_stocks_on_stock_sales_id"
   end
 
@@ -123,14 +124,14 @@ ActiveRecord::Schema.define(version: 2019_05_31_204010) do
   add_foreign_key "cities", "customers", column: "customers_id"
   add_foreign_key "cities", "states"
   add_foreign_key "cities", "zip_codes", column: "zip_codes_id"
-  add_foreign_key "financial_instruments", "customers", column: "customers_id"
+  add_foreign_key "financial_instruments", "customers"
   add_foreign_key "financial_instruments", "stocks", column: "stocks_id"
   add_foreign_key "sell_prices", "stock_sales", column: "stock_sales_id"
   add_foreign_key "states", "cities", column: "cities_id"
-  add_foreign_key "stock_sales", "buy_prices", column: "buy_prices_id"
-  add_foreign_key "stock_sales", "sell_prices", column: "sell_prices_id"
-  add_foreign_key "stock_sales", "stocks", column: "stocks_id"
-  add_foreign_key "stocks", "financial_instruments", column: "financial_instruments_id"
+  add_foreign_key "stock_sales", "buy_prices"
+  add_foreign_key "stock_sales", "sell_prices"
+  add_foreign_key "stock_sales", "stocks"
+  add_foreign_key "stocks", "financial_instruments"
   add_foreign_key "stocks", "stock_sales", column: "stock_sales_id"
   add_foreign_key "zip_codes", "cities", column: "cities_id"
 end

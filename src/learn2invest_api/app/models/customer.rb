@@ -1,5 +1,6 @@
 class Customer < ApplicationRecord
   has_secure_password
-  belongs_to :cash_account
   has_many :financial_instruments
+  belongs_to  :city
+  has_one :cash_account
 end
