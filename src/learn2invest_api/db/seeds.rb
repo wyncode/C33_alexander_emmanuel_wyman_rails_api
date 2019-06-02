@@ -80,6 +80,7 @@ BuyPrice.destroy_all
   stock.stock_sales_id = stock_sale
   stock.save
 
+
 end
 
 puts "created #{Customer.count} customers"
