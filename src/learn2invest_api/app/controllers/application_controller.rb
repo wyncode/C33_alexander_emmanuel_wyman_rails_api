@@ -22,11 +22,10 @@ class ApplicationController < ActionController::API
 
   def authenticate
     command = AuthenticateCustomer.call(params[:customer][:email], params[:customer][:password])
- 
     if command.success?
-      render json: { auth_token: command.result }
+      { auth_token: command.result, status: 200 }
     else
-      render json: { error: command.errors }, status: :unauthorized
+      { error: command.errors, status: 401 }
     end
   end
 

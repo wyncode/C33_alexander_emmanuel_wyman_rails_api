@@ -7,8 +7,8 @@ class CustomersController < ApplicationController
   #Show a Collection of Customers
   def index
     @customers = Customer.all
-    if @customers 
-    render json: {'customers': @customers } 
+    if @customers
+    render json: {'customers': @customers }
     end
   end
 
@@ -20,8 +20,8 @@ class CustomersController < ApplicationController
       @customer = nil
       puts 'customer not found'
     end
-    if @customer 
-      render json: {'customer': @customer} 
+    if @customer
+      render json: {'customer': @customer}
     end
   end
 
@@ -49,26 +49,27 @@ class CustomersController < ApplicationController
         state:                @state,
         zip_codes_id:         @zip_code.id)
 
-      #assign City to the ZipCode 
+      #assign City to the ZipCode
       @zip_code.cities_id =   @city.id
       @zip_code.save
-  
+
       @customer = Customer.new( customer_params.merge( {city_id: @city.id} ) )
-      
+
       if @customer.save
         puts 'Customer created'
-        authenticate
+        render json: authenticate
       else
         puts 'Customer not created'
+        render json: { status: 500 }
       end
     end
   end
-  
+
   def login
     authenticate
   end
-  
-  #Update a Customer info 
+
+  #Update a Customer info
   def update
     begin
       @customer = Customer.find(params[:id])
@@ -98,7 +99,7 @@ class CustomersController < ApplicationController
 
       @city.update(name:  params[:city],
       state:                @state,
-      zip_codes_id:         @zip_code.id) 
+      zip_codes_id:         @zip_code.id)
     end
   end
 
@@ -120,7 +121,7 @@ class CustomersController < ApplicationController
 
   # # Use callbacks to share common setup or constraints between actions.
   # def set_customers
-  #   @customers = Customer.all 
+  #   @customers = Customer.all
   # end
 
   # def set_customer_info
@@ -134,6 +135,6 @@ class CustomersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def customer_params
-    params.require(:customer).permit(:first_name, :last_name, :password, :password_confirmation, :mobile, :street1, :street2, :email, :city, :zip_code, :state )
+    params.require(:customer).permit(:first_name, :last_name, :password, :mobile, :street1, :street2, :email, :city, :zip_code, :state )
   end
 end
