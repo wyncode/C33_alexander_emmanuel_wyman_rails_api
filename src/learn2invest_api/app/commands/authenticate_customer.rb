@@ -15,6 +15,7 @@ class AuthenticateCustomer
   attr_accessor :email, :password
 
   def customer
+    byebug
     customer = Customer.find_by_email(email)
     return customer if customer && customer.authenticate(password)
 

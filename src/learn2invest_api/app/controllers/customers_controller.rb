@@ -1,5 +1,6 @@
 class CustomersController < ApplicationController
   skip_before_action :authenticate_request
+
   # before_action :set_customers, only: [:index]
   # before_action :set_customer_info, only: [:show, :create, :update, :destroy]
 
@@ -52,22 +53,19 @@ class CustomersController < ApplicationController
       @zip_code.cities_id =   @city.id
       @zip_code.save
   
-      @customer = Customer.new(
-      first_name:           params[:first_name],
-      last_name:            params[:last_name],
-      password_digest:      'password',
-      email:                params[:email],
-      mobile:               params[:mobile],
-      street1:              params[:street1],
-      street2:              params[:street2],
-      city:                 @city)
-
+      @customer = Customer.new( customer_params.merge( {city_id: @city.id} ) )
+      
       if @customer.save
         puts 'Customer created'
+        authenticate
       else
         puts 'Customer not created'
       end
     end
+  end
+  
+  def login
+    authenticate
   end
   
   #Update a Customer info 
@@ -136,6 +134,6 @@ class CustomersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def customer_params
-    params.permit(:customer, :first_name, :last_name, :mobile, :street1, :street2, :email, :city, :zip_code, :state )
+    params.require(:customer).permit(:first_name, :last_name, :password, :password_confirmation, :mobile, :street1, :street2, :email, :city, :zip_code, :state )
   end
 end
