@@ -40,7 +40,7 @@ BuyPrice.destroy_all
   customer = Customer.create!(
   first_name:           Faker::Name.first_name,
   last_name:            Faker::Name.last_name,
-  password_digest:      'password',
+  password:             'password',
   email:                Faker::Internet.email,
   mobile:               Faker::PhoneNumber.phone_number,
   street1:              Faker::Address.street_address,
