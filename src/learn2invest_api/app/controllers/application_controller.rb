@@ -19,14 +19,4 @@ class ApplicationController < ActionController::API
     headers['Access-Control-Request-Method'] = '*'
     headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
-
-  def authenticate
-    command = AuthenticateCustomer.call(params[:customer][:email], params[:customer][:password])
-    if command.success?
-      { auth_token: command.result, status: 200 }
-    else
-      { error: command.errors, status: 401 }
-    end
-  end
-
 end
