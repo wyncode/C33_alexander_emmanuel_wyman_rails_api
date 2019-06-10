@@ -1,3 +1,0 @@
-token='eyJhbGciOiJIUzI1NiJ9.eyJjdXN0b21lcl9pZCI6MjEsImV4cCI6MTU2MDI3Nzk4Mn0.NY2xrQh5mdmg_iuQfHZtf6sag4HzCmOI4LzslsdFDDw'
-
-curl -X POST -H 'Content-Type: application/json' -H 'Authorization: '"$token" -d '{"": }' http://localhost:3001/customers/
