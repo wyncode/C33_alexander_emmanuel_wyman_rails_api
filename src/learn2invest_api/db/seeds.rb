@@ -16,6 +16,22 @@ StockSale.destroy_all
 SellPrice.destroy_all
 BuyPrice.destroy_all
 
+  #create Admin
+  state = State.create!(
+    value: 'FL')
+  city = City.create!(
+    name: 'Little Town',
+    state: state)
+
+  customer = Customer.create!(
+  first_name:           'Jennifer',
+  last_name:            'Smith',
+  password:             'password',
+  email:                'anon@anon.com',
+  mobile:               '999-999-9999',
+  street1:              '99 NW 99th AVE',
+  city:                 city)
+
 10.times do
 
   #create State
@@ -40,7 +56,7 @@ BuyPrice.destroy_all
   customer = Customer.create!(
   first_name:           Faker::Name.first_name,
   last_name:            Faker::Name.last_name,
-  password_digest:      'password',
+  password:             'password',
   email:                Faker::Internet.email,
   mobile:               Faker::PhoneNumber.phone_number,
   street1:              Faker::Address.street_address,

@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  skip_before_action :authenticate_request
+  # skip_before_action :authenticate_request
 
   # before_action :set_customers, only: [:index]
   # before_action :set_customer_info, only: [:show, :create, :update, :destroy]
@@ -27,16 +27,6 @@ class CustomersController < ApplicationController
 
   #Create a Customer
   def create
-    #http://localhost:3000/customers/
-    # ?state=FL
-    # &city=Pembroke Pines
-    # &zip_code=33023
-    # &first_name=Alex
-    # &last_name=J
-    # &mobile=9546463310
-    # &street1=899 NW 156th AVE
-    # &street2
-    # &email=pop@aol.com
     ActiveRecord::Base.transaction do
       @state = State.create!(
       value:    params[:state])
@@ -57,7 +47,7 @@ class CustomersController < ApplicationController
 
       if @customer.save
         puts 'Customer created'
-        render json: authenticate
+        render json: { status: 200 } #authenticate
       else
         puts 'Customer not created'
         render json: { status: 500 }
@@ -65,9 +55,9 @@ class CustomersController < ApplicationController
     end
   end
 
-  def login
-    authenticate
-  end
+  # def login
+  #   render json: authenticate
+  # end
 
   #Update a Customer info
   def update
