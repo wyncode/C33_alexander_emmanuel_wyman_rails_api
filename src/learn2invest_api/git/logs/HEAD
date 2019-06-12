@@ -1,0 +1,19 @@
+0000000000000000000000000000000000000000 c1530a5fa82889fe04326c9b93a33c18f79699ce Wyman Frederick <wymanrf@gmail.com> 1560288629 -0400	commit (initial): deploy
+c1530a5fa82889fe04326c9b93a33c18f79699ce e66fc5a49a9fd957193364b3e61221ec94269b4e Wyman Frederick <wymanrf@gmail.com> 1560289065 -0400	commit: Convert to postgres
+e66fc5a49a9fd957193364b3e61221ec94269b4e 0ec3568a42c8bc5514dfe727471f86c7d988c2a2 Wyman Frederick <wymanrf@gmail.com> 1560289558 -0400	commit: modify database config
+0ec3568a42c8bc5514dfe727471f86c7d988c2a2 a7096592a92712b9505fc15729d638d9c247525c Wyman Frederick <wymanrf@gmail.com> 1560291318 -0400	commit: fix migrations
+a7096592a92712b9505fc15729d638d9c247525c 5f70b7008b1f31d5cd7fdbe7752b9522479e6ebd Wyman Frederick <wymanrf@gmail.com> 1560292647 -0400	commit: Fix migration.
+5f70b7008b1f31d5cd7fdbe7752b9522479e6ebd 1a64fe4d5c5416999f7e8ef1e5b2dc0726dc8bf5 Wyman Frederick <wymanrf@gmail.com> 1560296240 -0400	commit: added logs
+1a64fe4d5c5416999f7e8ef1e5b2dc0726dc8bf5 fef1ab5aae0bf3b790408d1d1f9cd22d10abfd56 Wyman Frederick <wymanrf@gmail.com> 1560299289 -0400	commit: update datebase.yml
+fef1ab5aae0bf3b790408d1d1f9cd22d10abfd56 fef1ab5aae0bf3b790408d1d1f9cd22d10abfd56 Wyman Frederick <wymanrf@gmail.com> 1560299294 -0400	reset: moving to HEAD
+fef1ab5aae0bf3b790408d1d1f9cd22d10abfd56 5f8feb74a658cb309187fa7654c1fd61b0266139 Wyman Frederick <wymanrf@gmail.com> 1560301212 -0400	commit: add logging and .env file
+5f8feb74a658cb309187fa7654c1fd61b0266139 974044b7985b53ad9ddff280f10cb537403e3c16 Wyman Frederick <wymanrf@gmail.com> 1560301424 -0400	commit: more logging added
+974044b7985b53ad9ddff280f10cb537403e3c16 accf89420dabc28f12b37e56bcdded0f27dcdf07 Wyman Frederick <wymanrf@gmail.com> 1560301862 -0400	commit: debugging auth
+accf89420dabc28f12b37e56bcdded0f27dcdf07 88a86af3b87836a3251767aa46f2e7532bf360c6 Wyman Frederick <wymanrf@gmail.com> 1560302219 -0400	commit: debugging auth 2
+88a86af3b87836a3251767aa46f2e7532bf360c6 caf5963a5320c0ca8930e78e68b7335de222544e Wyman Frederick <wymanrf@gmail.com> 1560302976 -0400	commit: changed auth controller
+caf5963a5320c0ca8930e78e68b7335de222544e f0a037a44edf0884d237b1900e61f713fa84678c Wyman Frederick <wymanrf@gmail.com> 1560303357 -0400	commit: changed auth controller 2
+f0a037a44edf0884d237b1900e61f713fa84678c 9baece269505f437a0f048a53cdc1b9ec9292457 Wyman Frederick <wymanrf@gmail.com> 1560303585 -0400	commit: changed auth controller 3
+9baece269505f437a0f048a53cdc1b9ec9292457 5eca4f5f856402d7baf2868e9ab401c6f214f27f Wyman Frederick <wymanrf@gmail.com> 1560303883 -0400	commit: changed auth controller 4
+5eca4f5f856402d7baf2868e9ab401c6f214f27f a21b9bc23fbb8115a897d12c50fd8de4ddc79d7a Wyman Frederick <wymanrf@gmail.com> 1560304222 -0400	commit: changed auth controller 4
+a21b9bc23fbb8115a897d12c50fd8de4ddc79d7a 62c46886fdc504bba21930a0bc7635c38fbafbeb Wyman Frederick <wymanrf@gmail.com> 1560304409 -0400	commit: changed auth controller 4
+62c46886fdc504bba21930a0bc7635c38fbafbeb 03b13988f86a9b2c29636c287451979923a2350c Wyman Frederick <wymanrf@gmail.com> 1560304541 -0400	commit: changed auth controller 5

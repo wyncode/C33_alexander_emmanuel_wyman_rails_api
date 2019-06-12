@@ -13,7 +13,7 @@ gem 'simple_command'
 
 gem 'faker'
 gem 'pg'
-
+gem 'dotenv-rails', '~> 2.1', '>= 2.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.0.rc1'
 # Use Puma as the app server

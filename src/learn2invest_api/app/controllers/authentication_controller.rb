@@ -5,6 +5,7 @@ class AuthenticationController < ApplicationController
    command = AuthenticateCustomer.call(params[:email], params[:password])
  
    if command.success?
+    Rails.logger.debug "command: #{command}"
      render json: { auth_token: command.result }
    else
      render json: { error: command.errors }, status: :unauthorized

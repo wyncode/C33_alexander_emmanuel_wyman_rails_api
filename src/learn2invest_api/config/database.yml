@@ -23,4 +23,5 @@ test:
 
 production:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  # database: <%= ENV['DATABASE'] %>
+  database: learn2invest_prod
