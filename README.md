@@ -1,5 +1,24 @@
-## C33 Pitch Day Projects
+# README
 
-ERD created at https://editor.ponyorm.com/user/dmmmd/investment_app/designer
+This README would normally document whatever steps are necessary to get the
+application up and running.
 
-![](readme_assets/images/erd.png)
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
